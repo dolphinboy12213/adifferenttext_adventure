@@ -14,7 +14,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             
             Console.WriteLine("It seems to be a dull morning today. Something nags you in your head, but you push off your worries to the side. \n ");
             
-            Console.WriteLine("\n  1. Get out of bed.    2. Wither away.   ");
+            Console.WriteLine("\n  1. Get out of bed.    2. Wither away.   \n");
             
             int decision1 = Convert.ToInt32(Console.ReadLine());
             
@@ -31,14 +31,20 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
 
             Console.WriteLine(" 1. Open your closet.  2. Investigate Your room.(D20) \n");
-            int decision2 = Convert.ToInt32(Console.ReadKey());
+            int decision2 = Convert.ToInt32(Console.ReadLine());
             if (decision2 == 1)
             {
 
             }
             if (decision2 == 2)
             {
-                Console.WriteLine("wee");
+                int intelligente = rnd.Next(1 , 20);
+                Console.WriteLine("You rolled a: " + intelligente);
+
+                if (intelligente == 1)
+                {
+                    
+                }
             }
 
             
