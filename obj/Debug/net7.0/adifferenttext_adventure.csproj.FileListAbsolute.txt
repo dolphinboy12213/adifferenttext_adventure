@@ -1,0 +1,15 @@
+/workspaces/adifferenttext_adventure/bin/Debug/net7.0/adifferenttext_adventure
+/workspaces/adifferenttext_adventure/bin/Debug/net7.0/adifferenttext_adventure.deps.json
+/workspaces/adifferenttext_adventure/bin/Debug/net7.0/adifferenttext_adventure.runtimeconfig.json
+/workspaces/adifferenttext_adventure/bin/Debug/net7.0/adifferenttext_adventure.dll
+/workspaces/adifferenttext_adventure/bin/Debug/net7.0/adifferenttext_adventure.pdb
+/workspaces/adifferenttext_adventure/obj/Debug/net7.0/adifferenttext_adventure.csproj.AssemblyReference.cache
+/workspaces/adifferenttext_adventure/obj/Debug/net7.0/adifferenttext_adventure.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/adifferenttext_adventure/obj/Debug/net7.0/adifferenttext_adventure.AssemblyInfoInputs.cache
+/workspaces/adifferenttext_adventure/obj/Debug/net7.0/adifferenttext_adventure.AssemblyInfo.cs
+/workspaces/adifferenttext_adventure/obj/Debug/net7.0/adifferenttext_adventure.csproj.CoreCompileInputs.cache
+/workspaces/adifferenttext_adventure/obj/Debug/net7.0/adifferenttext_adventure.dll
+/workspaces/adifferenttext_adventure/obj/Debug/net7.0/refint/adifferenttext_adventure.dll
+/workspaces/adifferenttext_adventure/obj/Debug/net7.0/adifferenttext_adventure.pdb
+/workspaces/adifferenttext_adventure/obj/Debug/net7.0/adifferenttext_adventure.genruntimeconfig.cache
+/workspaces/adifferenttext_adventure/obj/Debug/net7.0/ref/adifferenttext_adventure.dll
