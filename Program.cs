@@ -6,6 +6,37 @@ namespace MyApp // Note: actual namespace depends on the project name.
 {
     internal class Program
     {
+        static int calc_strength_bonus(int chastrength)
+        {   
+            int turnstren;
+
+            if (chastrength <= 6)
+            {
+                turnstren = 1;
+            }
+            else if (chastrength >= 6 && chastrength <= 10)
+            {
+                turnstren = 2;
+            }
+            else if (chastrength >= 10 && chastrength <= 13)
+            {
+                turnstren = 3;
+            }
+            else 
+            {
+                turnstren = 4;
+            }
+
+           return turnstren;
+            
+        }
+
+
+
+
+
+
+
         static void Main(string[] args)
         {   
             Random rnd = new Random();
@@ -15,28 +46,17 @@ namespace MyApp // Note: actual namespace depends on the project name.
          // figure out character stuff
          
             Console.WriteLine("Your Character's name: \n");
-            string? name = Convert.ToString(Console.ReadLine());
+            string? name = Convert.ToString(Console.ReadLine()); // name
+            
             Console.WriteLine("\nTap to roll for your strength.\n");
             Console.ReadKey();
-            int chastrength = rnd.Next(3, 18);
-            int strengthbonus;
-            if (chastrength <= 6)
-            {
-                strengthbonus = 1;
-            }
-            if (chastrength >= 6 && chastrength <= 10)
-            {
-                strengthbonus = 2;
-            }
-            if (chastrength >= 10 && chastrength <= 13)
-            {
-                strengthbonus = 3;
-            }
-            else 
-            {
-                strengthbonus = 4;
-            }
-            Console.WriteLine("Your strength is: \n" + chastrength + "\nAnd your strength mod is:\n" + strengthbonus);
+            
+            int chaStrength = rnd.Next(3, 18); // character strength
+            int chaIntel = rnd.Next(3, 18);
+            
+            int strengthbonus = calc_strength_bonus(chaStrength); // bonus calculated by strength score
+            
+            Console.WriteLine("Your strength is: \n" + chaStrength + "\nAnd your strength mod is:\n" + strengthbonus);
 
             Console.WriteLine("\n" + name + " wakes up to an annoying alarm clock.  \n");
             Console.WriteLine("It seems to be a dull morning today. Something feels wrong in your head , but you push off your worries to the side. \n ");
