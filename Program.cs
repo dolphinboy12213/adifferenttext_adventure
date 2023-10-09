@@ -11,6 +11,14 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Random rnd = new Random();
             Console.Title = "YOUR MOTHER";
             Console.ForegroundColor = ConsoleColor.Green;
+            
+            Console.WriteLine(" _|_|_|                                          _|                _|_|_|_|_|                      _|            _|_|          _|                                    _|                                    
+_|          _|_|    _|_|_|      _|_|    _|  _|_|        _|_|_|          _|      _|_|    _|    _|  _|_|_|_|      _|    _|    _|_|_|  _|      _|    _|_|    _|_|_|    _|_|_|_|  _|    _|  _|  _|_|    _|_|    
+_|  _|_|  _|_|_|_|  _|    _|  _|_|_|_|  _|_|      _|  _|                _|    _|_|_|_|    _|_|      _|          _|_|_|_|  _|    _|  _|      _|  _|_|_|_|  _|    _|    _|      _|    _|  _|_|      _|_|_|_|  
+_|    _|  _|        _|    _|  _|        _|        _|  _|                _|    _|        _|    _|    _|          _|    _|  _|    _|    _|  _|    _|        _|    _|    _|      _|    _|  _|        _|        
+  _|_|_|    _|_|_|  _|    _|    _|_|_|  _|        _|    _|_|_|          _|      _|_|_|  _|    _|      _|_| 
+                                                                                                                                                                                        
+            
             Console.WriteLine("\nYou wake up.\n");
             Console.WriteLine("It seems to be a dull morning today. Something nags you in your head, but you push off your worries to the side. \n ");
             
