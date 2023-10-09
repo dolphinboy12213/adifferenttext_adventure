@@ -11,9 +11,35 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Random rnd = new Random();
             Console.Title = "YOUR MOTHER";
             Console.ForegroundColor = ConsoleColor.Green;
-                                                                                                                                                                                        
-            Console.WriteLine("\nYou wake up.\n");
-            Console.WriteLine("It seems to be a dull morning today. Something nags you in your head, but you push off your worries to the side. \n ");
+         
+         // figure out character stuff
+         
+            Console.WriteLine("Your Character's name: \n");
+            string? name = Convert.ToString(Console.ReadLine());
+            Console.WriteLine("\nTap to roll for your strength.\n");
+            Console.ReadKey();
+            int chastrength = rnd.Next(3, 18);
+            int strengthbonus;
+            if (chastrength <= 6)
+            {
+                strengthbonus = 1;
+            }
+            if (chastrength >= 6 && chastrength <= 10)
+            {
+                strengthbonus = 2;
+            }
+            if (chastrength >= 10 && chastrength <= 13)
+            {
+                strengthbonus = 3;
+            }
+            else 
+            {
+                strengthbonus = 4;
+            }
+            Console.WriteLine("Your strength is: \n" + chastrength + "\nAnd your strength mod is:\n" + strengthbonus);
+
+            Console.WriteLine("\n" + name + " wakes up to an annoying alarm clock.  \n");
+            Console.WriteLine("It seems to be a dull morning today. Something feels wrong in your head , but you push off your worries to the side. \n ");
             
             Console.WriteLine("\n  1. Get out of bed.    2. Go back to sleep.   \n");
             
@@ -42,31 +68,31 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 Console.WriteLine("\n Press any key to roll...");
                 Console.ReadKey();
                 Console.WriteLine("\n Rolling craft (d20)...");
-                int craft = rnd.Next(1 , 20);
-                Console.WriteLine("\n You rolled a: " + craft);
+                int rollcraft = rnd.Next(1 , 20);
+                Console.WriteLine("\n You rolled a: " + rollcraft);
                 Console.ReadKey();
 
-                if (craft == 1)
+                if (rollcraft == 1)
                 {
                     Console.WriteLine("\nAs you search the room, You accidentally slip on a perfectly placed banana peel.");
                     Console.WriteLine("\nTake two damage");
                 }
-                if (craft == 20)
+                if (rollcraft == 20)
                 {
                     Console.WriteLine("\nAs you search the room, you find a really rusty crowbar under your bed and a very suspicisous banana peel.");
                     // add banana peel and crowbar to inv
                 }
-                if (craft >= 2 && craft <= 10)
+                if (rollcraft >= 2 && rollcraft <= 10)
                 {
                     Console.WriteLine("\nYou find nothing of real interest.");
                 }
-                if (craft >= 10 && craft <= 19)
+                if (rollcraft >= 10 && rollcraft <= 19)
                 {
                     Console.WriteLine("\nYou find a really rusty crowbar under your bed.");
                     //add crowbar to inv
                 }
             }
-
+            
             
         }
     }
