@@ -1,5 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 
 
 namespace MyApp // Note: actual namespace depends on the project name.
@@ -33,12 +36,16 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
 
 
-
+        static int calc_maxhealth(int Strength, int Dexterity){
+            int maxhealth = (2 * Strength) + (2 * Dexterity);
+            return maxhealth;
+        }
 
 
 
         static void Main(string[] args)
         {   
+            string[] inventory = new string[4];
             Random rnd = new Random();
             Console.Title = "YOUR MOTHER";
             Console.ForegroundColor = ConsoleColor.Green;
@@ -48,30 +55,42 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine("Your Character's name: \n");
             string? name = Convert.ToString(Console.ReadLine()); // name
             
-            Console.WriteLine("\nTap to roll for your strength.\n");
+            Console.WriteLine("\nTap to roll for " +name+ "'s stats \n");
             Console.ReadKey();
-            
-            int chaStrength = rnd.Next(3, 18); // character strength
-            int chaIntel = rnd.Next(3, 18);
-            int chaDex = rnd.Next(3, 18);
+            int[] statroll = new int[3];
+            for(int i = 0; i < 3; i++)
+            {
+                 statroll[i] = rnd.Next(1,6) + rnd.Next(1,6) + rnd.Next(1,6);
+            }
 
-            int strengthbonus = calc_modifier(chaStrength); // bonus calculated by strength score, intelligence, and dexterity
+            int chaStrength = statroll[0]; // character strength
+            int chaIntel = statroll[1]; // character intelligence
+            int chaDex = statroll[2]; // character dexterity
+
+            int strengthbonus = calc_modifier(chaStrength); // bonus calculated by strength, intelligence, and dexterity score.
             int intelbonus = calc_modifier(chaIntel);
             int dexbonus = calc_modifier(chaDex);
             
+            int Maxhealth = calc_maxhealth(chaStrength, chaDex);
             
-            Console.WriteLine("Your strength is: " + chaStrength + "\nAnd your strength mod is: " + strengthbonus); // display Ability scores and mods.
-            Console.WriteLine("Your intelligence is: " + chaIntel + "\nAnd your intelligence mod is: " + intelbonus);
-            Console.WriteLine("Your dexterity is: " + chaDex + "\nAnd your dexterity mod is: " + dexbonus);
+            Console.WriteLine("\nYour strength is: " + chaStrength + "\n\nAnd your strength mod is: +" + strengthbonus); // display Ability scores and mods.
+            Console.WriteLine("\nYour intelligence is: " + chaIntel + "\n\nAnd your intelligence mod is: +" + intelbonus);
+            Console.WriteLine("\nYour dexterity is: " + chaDex + "\n\nAnd your dexterity mod is: +" + dexbonus);
+            Console.WriteLine("\nYour total health is: " + Maxhealth);
+            Console.WriteLine("\nPress any key to Continue");
             Console.ReadKey();
 
+            Console.Clear();
+
             // start the story
-            Console.WriteLine("\n" + name + " wakes up to their annoying alarm clock, as usual \n");
-            Console.WriteLine("It seems to be a dull morning today. Something feels wrong in your head , but you push off your worries to the side. \n ");
+            Console.WriteLine("\n" + name + " wakes up to the same annoying alarm clock, as usual.\n");
+            Console.WriteLine("It seems to be another dull morning today. Something feels wrong in your head , but you push off your worries to the side. \n ");
             
             Console.WriteLine("\n  1. Get out of bed.    2. Go back to sleep.   \n");
             
             int decision1 = Convert.ToInt32(Console.ReadLine());
+            
+            
             
             if (decision1 == 1)
             {
@@ -90,34 +109,69 @@ namespace MyApp // Note: actual namespace depends on the project name.
             if (decision2 == 1)
             {
                 Console.WriteLine("\nYou open your closet and get dressed for the day ahead.");
+                inventory[0] = "Common Clothes";
+                Console.WriteLine("You have picked up: Common Clothes.\n\n Inventory:");
+                foreach (string item in inventory)
+                {
+                    Console.WriteLine(item);
+                }
             }
             if (decision2 == 2)
             {
                 Console.WriteLine("\n Press any key to roll...");
                 Console.ReadKey();
                 Console.WriteLine("\n Rolling craft (d20)...");
-                int rollcraft = rnd.Next(1 , 20);
-                Console.WriteLine("\n You rolled a: " + rollcraft);
+                int rollIntel = rnd.Next(1 , 20);
+                Console.WriteLine("\n You rolled a: " + (rollIntel + intelbonus) + "(" + rollIntel + "+" + intelbonus + ")");
                 Console.ReadKey();
 
-                if (rollcraft == 1)
+                if (rollIntel == 1)
                 {
                     Console.WriteLine("\nAs you search the room, You accidentally slip on a perfectly placed banana peel.");
                     Console.WriteLine("\nTake two damage");
                 }
-                if (rollcraft == 20)
+                else if (rollIntel == 20)
                 {
                     Console.WriteLine("\nAs you search the room, you find a really rusty crowbar under your bed and a very suspicisous banana peel.");
-                    // add banana peel and crowbar to inv
+                    Console.WriteLine("Pickup crowbar? (y/n)");
+                    string? i = Console.ReadLine();
+                    if (i == "y")
+                    {
+                         Console.WriteLine("You have picked up: Rusty Crowbar.");
+                         inventory[1] = "Rusty Crowbar";
+                    }
+                    Console.WriteLine("Pickup Banana Peel? (y/n)");
+                    string? ii = Console.ReadLine();
+                    if (ii == "y")
+                    {
+                        Console.WriteLine("You have picked up: Banana Peel");
+                        inventory[2] = "Banana Peel";
+                    }
+                    Console.WriteLine("\n\n Inventory:");
+                    foreach (string item in inventory)
+                    {
+                         Console.WriteLine(item);
+                    }
+
                 }
-                if (rollcraft >= 2 && rollcraft <= 10)
+                else if (rollIntel >= 2 && rollIntel <= 10)
                 {
                     Console.WriteLine("\nYou find nothing of real interest.");
                 }
-                if (rollcraft >= 10 && rollcraft <= 19)
+                else if (rollIntel >= 10 && rollIntel <= 19)
                 {
                     Console.WriteLine("\nYou find a really rusty crowbar under your bed.");
-                    //add crowbar to inv
+                    Console.WriteLine("Pickup crowbar? (y/n)");
+                    string? i = Console.ReadLine();
+                    if (i == "y")
+                    {
+                         Console.WriteLine("You have picked up: Rusty Crowbar. \n\nInventory: ");
+                         inventory[1] = "Rusty Crowbar";
+                         foreach(string item in inventory)
+                         {
+                            Console.WriteLine(item);
+                         }
+                    }
                 }
             }
             
