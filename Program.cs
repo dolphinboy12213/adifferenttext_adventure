@@ -5,29 +5,29 @@ using System;
 namespace MyApp // Note: actual namespace depends on the project name.
 {
     internal class Program
-    {
-        static int calc_strength_bonus(int chastrength)
-        {   
-            int turnstren;
+    {   
+        static int calc_modifier(int ability_score)
+        {   // to find bonus mod. for a ability score
+            int modifier;
 
-            if (chastrength <= 6)
+            if (ability_score <= 6)
             {
-                turnstren = 1;
+                modifier = 1;
             }
-            else if (chastrength >= 6 && chastrength <= 10)
+            else if (ability_score >= 6 && ability_score <= 10)
             {
-                turnstren = 2;
+                modifier = 2;
             }
-            else if (chastrength >= 10 && chastrength <= 13)
+            else if (ability_score >= 10 && ability_score <= 13)
             {
-                turnstren = 3;
+                modifier = 3;
             }
             else 
             {
-                turnstren = 4;
+                modifier = 4;
             }
 
-           return turnstren;
+           return modifier;
             
         }
 
@@ -53,12 +53,20 @@ namespace MyApp // Note: actual namespace depends on the project name.
             
             int chaStrength = rnd.Next(3, 18); // character strength
             int chaIntel = rnd.Next(3, 18);
-            
-            int strengthbonus = calc_strength_bonus(chaStrength); // bonus calculated by strength score
-            
-            Console.WriteLine("Your strength is: \n" + chaStrength + "\nAnd your strength mod is:\n" + strengthbonus);
+            int chaDex = rnd.Next(3, 18);
 
-            Console.WriteLine("\n" + name + " wakes up to an annoying alarm clock.  \n");
+            int strengthbonus = calc_modifier(chaStrength); // bonus calculated by strength score, intelligence, and dexterity
+            int intelbonus = calc_modifier(chaIntel);
+            int dexbonus = calc_modifier(chaDex);
+            
+            
+            Console.WriteLine("Your strength is: " + chaStrength + "\nAnd your strength mod is: " + strengthbonus); // display Ability scores and mods.
+            Console.WriteLine("Your intelligence is: " + chaIntel + "\nAnd your intelligence mod is: " + intelbonus);
+            Console.WriteLine("Your dexterity is: " + chaDex + "\nAnd your dexterity mod is: " + dexbonus);
+            Console.ReadKey();
+
+            // start the story
+            Console.WriteLine("\n" + name + " wakes up to their annoying alarm clock, as usual \n");
             Console.WriteLine("It seems to be a dull morning today. Something feels wrong in your head , but you push off your worries to the side. \n ");
             
             Console.WriteLine("\n  1. Get out of bed.    2. Go back to sleep.   \n");
