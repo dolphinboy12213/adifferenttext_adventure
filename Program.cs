@@ -49,6 +49,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Random rnd = new Random();
             Console.Title = "YOUR MOTHER";
             Console.ForegroundColor = ConsoleColor.Green;
+            int narratorInsanity = 0;
          
          // figure out character stuff
          
@@ -72,10 +73,11 @@ namespace MyApp // Note: actual namespace depends on the project name.
             int dexbonus = calc_modifier(chaDex);
             
             int Maxhealth = calc_maxhealth(chaStrength, chaDex);
+            int currentHealth = Maxhealth;
             
-            Console.WriteLine("\nYour strength is: " + chaStrength + "\n\nAnd your strength mod is: +" + strengthbonus); // display Ability scores and mods.
-            Console.WriteLine("\nYour intelligence is: " + chaIntel + "\n\nAnd your intelligence mod is: +" + intelbonus);
-            Console.WriteLine("\nYour dexterity is: " + chaDex + "\n\nAnd your dexterity mod is: +" + dexbonus);
+            Console.WriteLine("\nYour strength is: " + chaStrength + "\nAnd your strength mod is: +" + strengthbonus); // display Ability scores and mods.
+            Console.WriteLine("\nYour intelligence is: " + chaIntel + "\nAnd your intelligence mod is: +" + intelbonus);
+            Console.WriteLine("\nYour dexterity is: " + chaDex + "\nAnd your dexterity mod is: +" + dexbonus);
             Console.WriteLine("\nYour total health is: " + Maxhealth);
             Console.WriteLine("\nPress any key to Continue");
             Console.ReadKey();
@@ -84,7 +86,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             // start the story
             Console.WriteLine("\n" + name + " wakes up to the same annoying alarm clock, as usual.\n");
-            Console.WriteLine("It seems to be another dull morning today. Something feels wrong in your head , but you push off your worries to the side. \n ");
+            Console.WriteLine("It seems to be another dull morning today. Something feels wrong in your head ,but you push off your worries to the side. \n ");
             
             Console.WriteLine("\n  1. Get out of bed.    2. Go back to sleep.   \n");
             
@@ -99,11 +101,43 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
             if (decision1 == 2)
             {
-                Console.WriteLine("\nYou pass out and suffocate on your pillow.\n\n Press any key to continue. \n");
-                Console.ReadKey();
-                return;
-            }
+                int i = rnd.Next(1,5);
+                
+                if (i == 1 || i == 2)
+                {
+                Console.WriteLine("\nYou pass out and suffocate on your pillow.\n\n Press Y to end the game \n");
+                string? s = Console.ReadLine();
+                
+                if (s == "y" || s == "Y")
+                  {
+                    return;
+                  }
+                else
+                  {
+                    Console.WriteLine("Can you seriously not follow simple instructions?");
+                    int ii = rnd.Next(1 , 4);
+                    
+                    if (ii <= 3)
+                    {
+                        Console.ReadKey();
+                        return;
+                    }
+                    else if (ii == 4)
+                    {
+                        Console.ReadKey();
+                        Console.WriteLine("Fine, I'll give you one more chance. but don't pull more shit on me.\n");
+                        Console.WriteLine("YOU'VE BEEN WARNED");
+                        narratorInsanity++;
+                    }
 
+                  }
+                }
+                else if (i >= 3)
+                {
+                    Console.WriteLine("You wake up a bit later feeling a bit more refreshed");
+                }
+            }
+            Console.Clear();
             Console.WriteLine(" 1. Open your closet.  2. Investigate Your room.(D20) \n");
             int decision2 = Convert.ToInt32(Console.ReadLine());
             if (decision2 == 1)
@@ -116,7 +150,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     Console.WriteLine(item);
                 }
             }
-            if (decision2 == 2)
+            else if (decision2 == 2)
             {
                 Console.WriteLine("\n Press any key to roll...");
                 Console.ReadKey();
@@ -129,6 +163,9 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 {
                     Console.WriteLine("\nAs you search the room, You accidentally slip on a perfectly placed banana peel.");
                     Console.WriteLine("\nTake two damage");
+                    currentHealth = currentHealth - 12;
+                    Console.WriteLine("HP: "+currentHealth+"/"+Maxhealth);
+
                 }
                 else if (rollIntel == 20)
                 {
@@ -138,14 +175,14 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     if (i == "y")
                     {
                          Console.WriteLine("You have picked up: Rusty Crowbar.");
-                         inventory[1] = "Rusty Crowbar";
+                         inventory[0] = "Rusty Crowbar";
                     }
                     Console.WriteLine("Pickup Banana Peel? (y/n)");
                     string? ii = Console.ReadLine();
                     if (ii == "y")
                     {
                         Console.WriteLine("You have picked up: Banana Peel");
-                        inventory[2] = "Banana Peel";
+                        inventory[1] = "Banana Peel";
                     }
                     Console.WriteLine("\n\n Inventory:");
                     foreach (string item in inventory)
@@ -163,16 +200,18 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     Console.WriteLine("\nYou find a really rusty crowbar under your bed.");
                     Console.WriteLine("Pickup crowbar? (y/n)");
                     string? i = Console.ReadLine();
-                    if (i == "y")
+                    if (i == "y" || i == "Y")
                     {
                          Console.WriteLine("You have picked up: Rusty Crowbar. \n\nInventory: ");
-                         inventory[1] = "Rusty Crowbar";
+                         inventory[0] = "Rusty Crowbar";
                          foreach(string item in inventory)
                          {
                             Console.WriteLine(item);
                          }
                     }
+
                 }
+
             }
             
             
